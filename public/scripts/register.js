@@ -1,19 +1,42 @@
-document.querySelector('#register').addEventListener('click', async () =>{
-    const data = {
-        name: document.querySelector('#name').value,
-        email: document.querySelector('#email').value,
-        password: document.querySelector('#password').value,
-        photo: documento.querySelector('#photo').value,
-    }
-    const opts = {
-        method: 'POST',
-        headers: {'Context-Type' : 'application/json'},
-        body: JSON.stringify(data)
-    }
-    let response = await fetch('/api/session/register', opts)
-    response = await response.json();
-    if (response.statusCode === 201) {
-        location.replace('/')
-    }
-    return alert(response.message)
-})
+document.getElementById("btn_register").addEventListener("click", async (e) => {
+  console.log("click on register");
+
+  e.preventDefault();
+
+  const data = JSON.stringify({
+    email: document.getElementById("email").value,
+    password: document.getElementById("password").value,
+    photo: document.getElementById("photo_url").value,
+  });
+
+  const fetchOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: data,
+  };
+
+  let response = await fetch("/api/sessions/register", fetchOptions);
+  response = await response.json();
+
+  if (response.statusCode === 201) {
+    setTimeout(() => {
+      location.replace("/");
+    }, 1500);
+
+    Swal.fire({
+      title: response.message,
+      icon: "success",
+      timer: 1500,
+      timerProgressBar: true,
+      confirmButtonColor: "#ff3b3c",
+    });
+  } else {
+    Swal.fire({
+      title: response.message,
+      icon: "error",
+      timer: 2000,
+      timerProgressBar: true,
+      confirmButtonColor: "#ff3b3c",
+    });
+  }
+});

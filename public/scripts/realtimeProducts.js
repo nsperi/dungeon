@@ -1,11 +1,13 @@
-const socket = io()
-socket.on('products', (data) => {
+const socket = io();
+socket.on("products", (data) => {
+  //console.log('Así viene data a realtime:', data);
 
-    let list = document.querySelector('#productsList')
+  let list = document.querySelector("#productsList");
 
-    let template = ``
-    template = data.map(
-        each => `
+  let template = ``;
+  template = data
+    .map(
+      (each) => `
             <div class='col'>
                 <div class='card mb-4 rounded-3 shadow-sm'>
                     <div class='card-header py-3'>
@@ -22,21 +24,23 @@ socket.on('products', (data) => {
                     </div>
                 </div>
             </div>
-            `).toReversed().splice( 0, 6 ).join("") //Se agregó toReversed() para invertir el orden de la lista
-            // Eliminar splice
-    list.innerHTML = template
-})
+            `
+    )
+    .toReversed()
+    .splice(0, 6)
+    .join(""); //Se agregó toReversed() para invertir el orden de la lista
+  // Eliminar splice
+  list.innerHTML = template;
+});
 
-document.querySelector('#confirm').addEventListener('click', (event) => {
+document.querySelector("#confirm").addEventListener("click", (event) => {
+  console.log("Click de boton");
+  const category = document.querySelector("#category").value;
+  const title = document.querySelector("#title").value;
+  const price = parseInt(document.querySelector("#price").value);
+  const stock = parseInt(document.querySelector("#stock").value);
+  const photo = document.querySelector("#photo").value;
 
-    console.log("Click de boton")
-    const category = document.querySelector('#category').value
-    const title = document.querySelector('#title').value
-    const price = parseInt(document.querySelector('#price').value)
-    const stock = parseInt(document.querySelector('#stock').value)
-    const photo = document.querySelector('#photo').value
-
-    const newProduct = { category, title, price, stock, photo }
-    socket.emit('createProduct', newProduct)
-    }
-)
+  const newProduct = { category, title, price, stock, photo };
+  socket.emit("createProduct", newProduct);
+});
