@@ -1,0 +1,40 @@
+<div class="d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh;">
+    <h1 class='text-white text-center my-2'>Login page</h1>
+    <form>
+        <div class="d-flex justify-content-center">
+            <div class="card" style="background: rgba(255, 255, 255, 0.1); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); backdrop-filter: blur(5px); padding: 20px;">
+                <div class="card-header">
+                    <h3 class="text-white">Sign In</h3>                    
+                </div>
+                <div class="card-body">
+                    <form id="login_form" > 
+                        <div class="d-flex gap-4 justify-content-center align-items-center">
+                            <img src="/images/user_icon.svg" style="height: 30px;"/>
+                            <input id="email" name="email" type="text" class="form-control my-2 text-white" placeholder="e-mail" style="background: rgba(255, 255, 255, 0.379); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); backdrop-filter: blur(5px) color:white;">
+                        </div>
+
+                        <div class="d-flex gap-4 justify-content-center align-items-center">
+                            <img src="/images/pass_icon.svg" style="height: 30px;"/>
+                            <input id="password" nem="password" type="password" class="form-control my-2" placeholder="password" style="background: rgba(255, 255, 255, 0.379); box-shadow: 0 4px 30px rgba(20, 19, 19, 0.1); backdrop-filter: blur(2px); color:white;">
+                        </div>
+
+                        <div class="d-flex gap-4 justify-content-center align-items-center">
+                            <button type="button" id="btn_login" class="btn border-1 border-white rounded px-4 text-white">Login</button>                           
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <div class="d-flex justify-content-center links text-white">
+                        Don't have an account?<a href="/register" class="ms-4" style="color: #EAFF6A; text-decoration: none;">Sign Up</a>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="#" style="color: #EAFF6A; text-decoration: none;">Forgot your password?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/scripts/login.js"></script>
